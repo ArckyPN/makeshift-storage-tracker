@@ -10,7 +10,14 @@
   "scripts": {
     "server-dev": "cd backend && npm run dev",
     "client-dev": "cd frontend && npm run serve",
-    "dev": "npm-run-all --parallel server-dev client-dev"
+    "install-server": "cd backend && npm install",
+    "install-client": "cd frontend && npm install",
+    "run-server": "cd backend && npm run start",
+    "run-client": "cd frontend && serve -s dist -l 8080",
+    "build-client": "cd frontend && npm run build",
+    "dev": "npm-run-all --parallel server-dev client-dev",
+    "setup": "npm install && npm-run-all --parallel install-server install-client && npm run build-client",
+    "start": "npm-run-all --parallel run-server run-client"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"
